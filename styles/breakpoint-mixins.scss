@@ -1,0 +1,29 @@
+// media query breakpoints
+$breakpoint: (
+  'small': 35rem,
+  'medium': 55rem,
+  'large': 70rem,
+);
+
+/*
+responsive breakpoint mixin:
+@include respond('medium') { ... }
+*/
+@mixin respond($bp) {
+  @media (min-width: map-get($breakpoint, $bp)) {
+    @content;
+  }
+}
+
+// @include respond('medium') {
+//   width: 40em;
+// }
+
+// compiles to:
+// @media (min-width: 50rem) {
+
+//   main {
+//     width: 40em
+//   }
+
+// }

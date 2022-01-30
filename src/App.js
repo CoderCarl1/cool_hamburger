@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Header } from './components/header';
+import './styles/styles.css';
 
-function App() {
+export function App() {
+  function handleNavOpen(Event) {
+    console.log('NAV BUTTON CLICKED', Event.target);
+    return;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <>
+      <Header handleNavOpen={handleNavOpen} />
+      <h1>APP</h1>
+      <main>
+        <h2>Content</h2>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat
+          quasi distinctio voluptate rerum. Nobis pariatur sapiente repellat
+          saepe maxime omnis rem possimus recusandae voluptatum velit? Libero,
+          pariatur tempora laboriosam animi consequatur obcaecati quo
+          exercitationem, vel dolores aperiam repellat tenetur non fugit at,
+          optio rerum blanditiis ad dolore ullam provident omnis.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      </main>
+    </>
   );
 }
 
