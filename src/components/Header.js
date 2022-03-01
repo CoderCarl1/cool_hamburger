@@ -16,6 +16,7 @@ export function Header({ handleNavOpen, navActive }) {
           <span className="sr-only">Open Menu</span>
         </div>
       </button>
+
       <nav id="primary-navigation" className={navActive ? 'active' : 'closed'}>
         <div
           className={

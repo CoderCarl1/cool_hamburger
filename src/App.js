@@ -27,12 +27,12 @@ export function App() {
           <p className="totally-centered">TEST</p>
         </TiltImageLink> */}
 
-        <TiltImageLink
+        {/* <TiltImageLink
           href={'https://codercarl.xyz/'}
           imgSrc={
             'https://codercarl.xyz/static/7118055d0c087db784359b3c0ce0edea/c1587/carl_pic.webp'
           }
-        />
+        /> */}
       </main>
     </div>
   );
