@@ -1,0 +1,29 @@
+.tilt-root {
+  min-height: 50px;
+  min-width: 4rem;
+  width: fit-content;
+  padding: 2em;
+  background-color: white;
+  background-image: linear-gradient(135deg, #478a50 0%, #2bafe4 100%);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+  display: flex;
+}
+.tilt-child {
+  position: absolute;
+  flex: 1 1;
+  top: 50%;
+  left: 50%;
+  transform: translateZ(30px) translateX(-50%) translateY(-50%);
+  box-shadow: 0 0 50px 0 rgba(51, 51, 51, 0.3);
+  background-color: white;
+  padding: 0.3em;
+}
+.totally-centered {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

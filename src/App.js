@@ -1,18 +1,19 @@
-import React from 'react';
-import { Header } from './components/header';
+import React, { useState } from 'react';
+import { Header, TiltImageLink } from './components';
 import './styles/styles.css';
 
 export function App() {
+  const [navActive, setNavActive] = useState(false);
+
   function handleNavOpen(Event) {
-    console.log('NAV BUTTON CLICKED', Event.target);
-    return;
+    setNavActive((prev) => !prev);
   }
 
   return (
-    <>
-      <Header handleNavOpen={handleNavOpen} />
-      <h1>APP</h1>
+    <div className="page-container">
+      <Header handleNavOpen={handleNavOpen} navActive={navActive} />
       <main>
+        <h1>APP</h1>
         <h2>Content</h2>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat
@@ -22,8 +23,18 @@ export function App() {
           exercitationem, vel dolores aperiam repellat tenetur non fugit at,
           optio rerum blanditiis ad dolore ullam provident omnis.
         </p>
+        {/* <TiltImageLink>
+          <p className="totally-centered">TEST</p>
+        </TiltImageLink> */}
+
+        <TiltImageLink
+          href={'https://codercarl.xyz/'}
+          imgSrc={
+            'https://codercarl.xyz/static/7118055d0c087db784359b3c0ce0edea/c1587/carl_pic.webp'
+          }
+        />
       </main>
-    </>
+    </div>
   );
 }
 

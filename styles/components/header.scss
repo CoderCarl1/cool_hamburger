@@ -1,7 +1,204 @@
-@import '../breakpoint-mixins.scss';
+/**
+  HEADER
+*/
 
+header {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 2em;
+  width: 100%;
+  background: var(--dark);
+  font-size: --fs-500;
+  @media only screen and (min-width: 45em) {
+    height: 15vh;
+  }
+}
+
+#primary-navigation {
+  background: var(--light);
+  border-bottom: 2px solid var(--dark);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  @media only screen and (min-width: 45em) {
+    margin: 1em 0 0 0;
+    flex-direction: row;
+    height: 5%;
+  }
+
+  .logo {
+    border-radius: 50%;
+    height: 4.5em;
+    aspect-ratio: 1;
+    margin: 0 0 0 clamp(1em, +0.025vw, 1.5em);
+    img {
+      background: white;
+      inset: 0;
+      left: 0.25em;
+      top: 0.2em;
+      border-radius: 50%;
+      height: 4em;
+      aspect-ratio: 1;
+    }
+    @media only screen and (max-width: 44.999em) {
+      img {
+        height: 3.4em;
+      }
+      &.nav-open {
+        margin: 2em auto 0 2em;
+      }
+    }
+  }
+  // make visible for tab order when menu is open
+  &.active {
+    ul {
+      li {
+        visibility: visible;
+      }
+    }
+  }
+  ul {
+    display: flex;
+    flex: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    list-style: none;
+    flex-direction: column;
+    // hide visibility for tab order when menu is closed
+    li {
+      visibility: hidden;
+    }
+    @media only screen and (min-width: 45em) {
+      flex-direction: row;
+      gap: 1rem;
+      margin-inline: auto;
+      padding: 0;
+      li {
+        flex: 0 0 30%;
+        max-width: 12ch;
+        visibility: visible;
+      }
+    }
+  }
+  /**
+ MOB NAV COLLAPSE / SHOW
+*/
+  @media only screen and (max-width: 44.999em) {
+    transform-origin: right center;
+    transition: transform ease 0.35s;
+    min-width: 140px;
+    width: max(80vw, 440px);
+    max-width: 80vw;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    &.closed {
+      transform: scale(0, 0.6);
+    }
+    &.active {
+      transform: scale(1, 1);
+    }
+  }
+}
+
+/**
+HAMBURGER STUFF
+*/
 .hamburger-wrapper {
-  width: 4em;
-  aspect-ratio: 1;
-  border: 1px solid red;
+  display: none;
+}
+@media only screen and (max-width: 44.999em) {
+  .hamburger-wrapper {
+    position: relative;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
+    border: none;
+    &.active {
+      &:focus-within {
+        &:after {
+          content: '';
+          position: absolute;
+          left: -0.5rem;
+          top: -0.25rem;
+          z-index: 2;
+          height: 3rem;
+          width: 3rem;
+          border: 4px solid black;
+        }
+      }
+    }
+    &:hover,
+    &:focus-within,
+    &:active {
+      .hamburger,
+      .hamburger::before,
+      .hamburger::after {
+        animation: glow 1s ease-in-out infinite alternate;
+      }
+      .hamburger.active {
+        animation: none;
+      }
+    }
+  }
+
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    left: 0;
+    border-radius: 4px;
+    transition: all ease 0.35s;
+    z-index: 2;
+    background-image: linear-gradient(
+      to right,
+      var(--purple) 0%,
+      var(--pink) 50%,
+      var(--purple) 100%
+    );
+    background-size: 200%;
+    background-position: left center;
+  }
+
+  .hamburger {
+    bottom: 0;
+    &::before {
+      content: '';
+      top: -0.5em;
+    }
+    &::after {
+      content: '';
+      top: -1em;
+    }
+  }
+
+  .hamburger.active,
+  .hamburger.active::before,
+  .hamburger.active::after {
+    background-size: 100%;
+  }
+
+  .hamburger.active {
+    background: transparent;
+
+    &::before {
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+      top: -0.5rem;
+    }
+    &::before,
+    &::after {
+      box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+  }
 }
