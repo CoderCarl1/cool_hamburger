@@ -1,7 +1,9 @@
+@import './mixins.scss';
+@import './keyframes.scss';
+
 /**
   COLORS
 */
-
 :root {
   --dark: rgb(107, 114, 114);
   --darkest: rgb(30, 56, 56);
@@ -132,95 +134,12 @@ button:active {
     inset: 0.125em;
   }
   &:hover,
-  &:focus-within {
+  &:focus-within,
+  &:active {
     animation: gradient 2s ease infinite alternate,
       glow 2s ease-in-out infinite alternate;
     & > * {
       color: var(--darkest);
     }
-  }
-}
-
-@keyframes gradient {
-  from {
-    background-position: left center;
-  }
-  to {
-    background-position: right center;
-  }
-}
-@keyframes glow {
-  from {
-    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.11),
-      0 1px 3px rgba(255, 255, 255, 0.2);
-    outline: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  to {
-    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.11),
-      0 1px 3px rgba(255, 255, 255, 0.6);
-    outline: 1px solid rgba(255, 255, 255, 0.45);
-  }
-}
-
-@keyframes bounce1 {
-  0% {
-    transform: translateX(20vw) translateY(20vh);
-  }
-  15% {
-    transform: translateX(-40vw) translateY(25vh);
-  }
-  40% {
-    transform: translateX(50vw) translateY(-40vh);
-  }
-  50% {
-    transform: translateX(-40vw) translateY(-40vh);
-  }
-  80% {
-    transform: translateX(-20vw) translateY(60vh);
-  }
-  100% {
-    transform: translateX(-40vw) translateY(-85vh);
-  }
-}
-
-@keyframes bounce2 {
-  0% {
-    transform: translateX(-20vw) translateY(50vh);
-  }
-  15% {
-    transform: translateX(-60vw) translateY(20vh);
-  }
-  40% {
-    transform: translateX(-100vw) translateY(-40vh);
-  }
-  50% {
-    transform: translateX(40vw) translateY(60vh);
-  }
-  80% {
-    transform: translateX(-40vw) translateY(80vh);
-  }
-  100% {
-    transform: translateX(100vw) translateY(-100vh);
-  }
-}
-
-@keyframes bounce3 {
-  0% {
-    transform: translateX(10vw) translateY(60vh);
-  }
-  15% {
-    transform: translateX(-80vw) translateY(34vh);
-  }
-  40% {
-    transform: translateX(-50vw) translateY(-40vh);
-  }
-  50% {
-    transform: translateX(-65vw) translateY(-15vh);
-  }
-  80% {
-    transform: translateX(-20vw) translateY(70vh);
-  }
-  100% {
-    transform: translateX(10vw) translateY(-85vh);
   }
 }

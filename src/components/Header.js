@@ -27,6 +27,7 @@ export function Header({ handleNavOpen, navActive }) {
         >
           <img src={CD_DEV_Logo} alt="The Coder carl logo" />
         </div>
+
         <ul>
           <li className="gradient-bground btn fs-500">
             <a className="clr-dark bg-light" href="/home">
@@ -44,6 +45,13 @@ export function Header({ handleNavOpen, navActive }) {
             </a>
           </li>
         </ul>
+        {navActive && (
+          <>
+            <div className="balls"></div>
+            <div className="balls"></div>
+            <div className="balls"></div>
+          </>
+        )}
       </nav>
     </header>
   );

@@ -1,0 +1,12 @@
+@mixin randomXandY {
+  transform: translateX(1 + floor(random(100) * ((100 - 1) + 1)) + vw)
+    translateY(1 + floor(random(100) * ((100 - 1) + 1)) + vw);
+}
+@mixin bounceAnimation($animation, $length, $p1, $p2, $p3, $p4) {
+  animation: $animation $length cubic-bezier($p1, $p2, $p3, $p4) infinite
+    alternate;
+}
+@mixin randomXandY {
+  transform: translateX(1 + floor(random() * ((100 - 1) + 1)))
+    translateY(1 + floor(random() * ((100 - 1) + 1)));
+}

@@ -5,7 +5,7 @@
 header {
   display: flex;
   flex-direction: row-reverse;
-  padding: 2em;
+  padding: clamp(1em, 1em + 0.5%, 2em);
   width: 100%;
   background: var(--dark);
   font-size: var(--fs-500);
@@ -16,13 +16,14 @@ header {
 
 #primary-navigation {
   background: var(--light);
-  border-bottom: 2px solid var(--dark);
+
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   margin: 0;
   @media only screen and (min-width: 45em) {
+    border-bottom: 2px solid var(--dark);
     margin: 1em 0 0 0;
     flex-direction: row;
     height: 5%;
@@ -30,7 +31,7 @@ header {
 
   .logo {
     border-radius: 50%;
-    height: 4.5em;
+    height: 4em;
     aspect-ratio: 1;
     margin: 0 0 0 clamp(1em, +0.025vw, 1.5em);
     img {
@@ -39,14 +40,14 @@ header {
       left: 0.25em;
       top: 0.25em;
       border-radius: 50%;
-      height: 4em;
+      height: 3.5em;
       aspect-ratio: 1;
     }
     @media only screen and (max-width: 44.999em) {
       img {
-        height: 3.4em;
-        left: 0.15em;
-        top: 0.15em;
+        height: 3em;
+        left: 0.12em;
+        top: 0.12em;
       }
       &.nav-open {
         margin: 2em auto 0 2em;
@@ -59,48 +60,10 @@ header {
       li {
         visibility: visible;
         // fun balls
-        &:nth-of-type(1) {
-          &:after {
-            left: 15%;
-            bottom: 10%;
-            animation: bounce1 20s cubic-bezier(0.26, 1.28, 0.65, -0.04)
-              infinite alternate;
-          }
-          &:before {
-            left: 15%;
-            bottom: 10%;
-            animation: bounce2 20s cubic-bezier(0.03, 0.68, 0.34, 1.21) infinite
-              alternate;
-          }
-        }
-        &:nth-of-type(2) {
-          &:after {
-            left: 15%;
-            bottom: 10%;
-            animation: bounce1 20s cubic-bezier(0.03, 0.68, 0.34, 1.21) infinite
-              alternate;
-          }
-          &:before {
-            left: 20%;
-            bottom: 50%;
-            animation: bounce3 20s cubic-bezier(0.26, 1.28, 0.65, -0.04)
-              infinite alternate;
-          }
-        }
-        &:nth-of-type(3) {
-          &:after {
-            left: 15%;
-            bottom: 10%;
-            animation: bounce1 20s cubic-bezier(0.26, 1.28, 0.65, -0.04)
-              infinite alternate;
-          }
-          &:before {
-            left: 70%;
-            bottom: 80%;
-            animation: bounce3 20s cubic-bezier(0.56, 0.28, 0.5, 1.04) infinite
-              alternate;
-          }
-        }
+      }
+    }
+    @media only screen and (max-width: 44.999em) {
+      .balls {
         &:after,
         &:before {
           content: '';
@@ -116,6 +79,45 @@ header {
             var(--pink) 50%,
             var(--purple) 100%
           );
+          transform: rotate(360deg);
+          transition: transform 2s ease;
+        }
+
+        &:nth-of-type(1) {
+          &:after {
+            left: 15%;
+            bottom: 10%;
+            @include bounceAnimation(bounce1, 20s, 0.26, 1.28, 0.65, -0.04);
+          }
+          &:before {
+            left: 15%;
+            bottom: 10%;
+            @include bounceAnimation(bounce2, 18s, 0.03, 0.68, 0.34, 1.21);
+          }
+        }
+        &:nth-of-type(2) {
+          &:after {
+            left: 15%;
+            bottom: 10%;
+            @include bounceAnimation(bounce1, 15s, 0.03, 0.68, 0.34, 1.21);
+          }
+          &:before {
+            left: 20%;
+            bottom: 50%;
+            @include bounceAnimation(bounce3, 10s, 0.26, 1.28, 0.65, -0.04);
+          }
+        }
+        &:nth-of-type(3) {
+          &:after {
+            left: 15%;
+            bottom: 10%;
+            @include bounceAnimation(bounce1, 24s, 0.26, 1.28, 0.65, -0.04);
+          }
+          &:before {
+            left: 70%;
+            bottom: 80%;
+            @include bounceAnimation(bounce3, 12s, 0.56, 0.28, 0.5, 1.04);
+          }
         }
       }
     }
@@ -138,8 +140,9 @@ header {
       margin-inline: auto;
       padding: 0;
       li {
-        flex: 0 0 30%;
-        max-width: 12ch;
+        flex: 0 0 25%;
+        min-width: 11ch;
+        max-width: 250px;
         visibility: visible;
       }
     }
@@ -163,16 +166,22 @@ header {
     }
     &.active {
       transform: scale(1, 1);
+      // border-left: 1px solid;
 
+      box-shadow: -7px 2px 13px -4px var(--purple);
       &:after {
         content: '';
         z-index: -1;
         position: fixed;
-        width: 20vw;
+        width: 21vw;
         inset: 0;
-        left: -20vw;
-        background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(13px);
+        left: -21vw;
+        background: rgba(71, 139, 244, 0.9);
+        @supports (backdrop-filter: blur(13px)) {
+          background: rgb(135 144 158 / 40%);
+          backdrop-filter: blur(13px);
+        }
+
         @media only screen and (min-width: 45em) {
           backdrop-filter: none;
           transform: none;
