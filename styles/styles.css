@@ -1,76 +1,4 @@
-/* =============
-  CSS RESET
-============= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd,
-ul {
-  margin: 0;
-}
-
-ul[role='list'],
-ol[role='list'] {
-  list-style: none;
-}
-
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-html,
-body,
-#root {
-  height: 100%;
-  /* min-height: 100vh; */
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-  overflow-x: hidden;
-}
-
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-img,
-picture {
-  max-width: 100%;
-  display: block;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+@import './global/reset.css';
 @keyframes gradient {
   from {
     background-position: left center;
@@ -614,7 +542,6 @@ HAMBURGER STUFF
 .tilt-root {
   min-height: 50px;
   min-width: 4rem;
-  width: -moz-fit-content;
   width: fit-content;
   padding: 2em;
   background-color: white;
@@ -728,7 +655,6 @@ HAMBURGER STUFF
   grid-template-rows: 20rem;
   overflow-y: scroll;
   height: 90vh;
-  grid-gap: 0.25em;
   gap: 0.25em;
 }
 @media only screen and (min-width: 35em) {
@@ -807,3 +733,5 @@ HAMBURGER STUFF
   font-weight: 700;
   color: red;
 }
+
+/*# sourceMappingURL=styles.css.map */

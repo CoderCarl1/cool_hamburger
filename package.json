@@ -6,18 +6,21 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "framer-motion": "^6.2.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-query": "^3.34.16",
+    "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "react-spring": "^9.4.2",
     "vanilla-tilt": "^1.7.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "concurrently \"npm run dev:css\" \"react-scripts start\"",
-    "start": "react-scripts start",
-    "dev:css": "postcss styles/styles.scss --output src/styles/styles.css --watch --verbose --env development",
-    "prebuild": "postcss styles/styles.scss --output src/styles/styles.css --env production",
+    "sass:watch": "sass styles/styles.scss styles/styles.css --watch",
+    "dev": "concurrently \"npm run sass:watch\" \"npm run dev:css\" \"react-scripts start\"",
+    "dev:css": "postcss styles/styles.css --output src/styles/styles.css --watch --verbose --env development",
+    "prebuild": "postcss styles/styles.css --output src/styles/styles.css --env production",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -55,6 +58,7 @@
     "postcss-map-get": "^0.3.0",
     "postcss-nested": "^5.0.6",
     "postcss-scss": "^4.0.3",
-    "postcss-sort-media-queries": "^4.2.1"
+    "postcss-sort-media-queries": "^4.2.1",
+    "sass": "^1.49.9"
   }
 }

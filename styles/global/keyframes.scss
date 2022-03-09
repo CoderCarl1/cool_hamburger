@@ -19,65 +19,66 @@
   }
 }
 
+// transform: translateX(0vw) translateY(5vh) rotate(0deg) scale(0.6);
 @keyframes bounce1 {
   0% {
-    transform: translateX(0vw) translateY(5vh);
+    @include randomBall(true);
   }
   15% {
-    transform: translateX(-40vw) translateY(25vh);
+    @include randomBall;
   }
   40% {
-    transform: translateX(50vw) translateY(-40vh);
+    @include randomBall;
   }
   50% {
-    transform: translateX(-40vw) translateY(-40vh);
+    @include randomBall;
   }
   80% {
-    transform: translateX(-20vw) translateY(60vh);
+    @include randomBall;
   }
   100% {
-    transform: translateX(-40vw) translateY(-85vh);
+    @include randomBall(true);
   }
 }
 
 @keyframes bounce2 {
   0% {
-    transform: translateX(-20vw) translateY(50vh);
+    @include randomBall(true);
   }
   15% {
-    transform: translateX(-60vw) translateY(20vh);
+    @include randomBall;
   }
   40% {
-    transform: translateX(-100vw) translateY(-40vh);
+    @include randomBall;
   }
   50% {
-    transform: translateX(40vw) translateY(60vh);
+    @include randomBall;
   }
   80% {
-    transform: translateX(-40vw) translateY(80vh);
+    @include randomBall;
   }
   100% {
-    transform: translateX(100vw) translateY(-100vh);
+    @include randomBall(true);
   }
 }
 
 @keyframes bounce3 {
   0% {
-    transform: translateX(10vw) translateY(60vh);
+    @include randomBall(true);
   }
   15% {
-    transform: translateX(-80vw) translateY(34vh);
+    @include randomBall;
   }
   40% {
-    transform: translateX(-50vw) translateY(-40vh);
+    @include randomBall;
   }
   50% {
-    transform: translateX(-65vw) translateY(-15vh);
+    @include randomBall;
   }
   80% {
-    transform: translateX(-20vw) translateY(70vh);
+    @include randomBall;
   }
   100% {
-    transform: translateX(10vw) translateY(-85vh);
+    @include randomBall(true);
   }
 }

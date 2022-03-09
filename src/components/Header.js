@@ -1,11 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import CD_DEV_Logo from '../assetts/CD_Dev_Logo_200x200.png';
 
-export function Header({ handleNavOpen, navActive }) {
-  useEffect(() => {});
+export function Header({ handleNavOpen, navActive, location }) {
+  function closeMenu() {
+    if (!navActive) return;
+    handleNavOpen();
+  }
 
   return (
-    <header>
+    <header className="page-container">
+      <h1 className="page-title uppercase text-center page-container">Shows</h1>
       <button
         onClick={handleNavOpen}
         aria-controls="primary-navigation"
@@ -18,7 +23,8 @@ export function Header({ handleNavOpen, navActive }) {
       </button>
 
       <nav id="primary-navigation" className={navActive ? 'active' : 'closed'}>
-        <div
+        <h2 className="sr-only">Main Menu</h2>
+        {/* <div
           className={
             navActive
               ? 'logo gradient-bground nav-open'
@@ -26,31 +32,52 @@ export function Header({ handleNavOpen, navActive }) {
           }
         >
           <img src={CD_DEV_Logo} alt="The Coder carl logo" />
-        </div>
-
+        </div> */}
         <ul>
-          <li className="gradient-bground btn fs-500">
-            <a className="clr-dark bg-light" href="/home">
+          <li
+            className={
+              location.pathname === '/'
+                ? 'gradient-bground btn fs-500 current-page'
+                : 'gradient-bground btn fs-500'
+            }
+          >
+            <Link onClick={closeMenu} className="clr-dark bg-light" to="/">
               Home
-            </a>
+            </Link>
           </li>
-          <li className="gradient-bground btn fs-500">
-            <a className="clr-dark bg-light" href="/about">
+          <li
+            className={
+              location.pathname === '/about'
+                ? 'gradient-bground btn fs-500 current-page'
+                : 'gradient-bground btn fs-500'
+            }
+          >
+            <Link onClick={closeMenu} className="clr-dark bg-light" to="/about">
               About
-            </a>
+            </Link>
           </li>
-          <li className="gradient-bground btn fs-500">
-            <a className="clr-dark bg-light" href="/contact">
+          <li
+            className={
+              location.pathname === '/contact'
+                ? 'gradient-bground btn fs-500 current-page'
+                : 'gradient-bground btn fs-500'
+            }
+          >
+            <Link
+              onClick={closeMenu}
+              className="clr-dark bg-light"
+              to="/contact"
+            >
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
         {navActive && (
-          <>
+          <div>
             <div className="balls"></div>
             <div className="balls"></div>
             <div className="balls"></div>
-          </>
+          </div>
         )}
       </nav>
     </header>
